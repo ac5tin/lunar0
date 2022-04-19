@@ -1,3 +1,10 @@
+
+# ingress
+resource "scaleway_lb_ip" "nginx_ip" {
+  zone       = var.zone
+  project_id = var.project_id
+}
+
 resource "helm_release" "nginx_ingress" {
   name       = "nginx-ingress"
   namespace  = "kube-system"

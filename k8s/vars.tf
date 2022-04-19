@@ -42,6 +42,11 @@ variable "aws_secret_key" {
   description = "AWS secret key"
 }
 
+variable "aws_region" {
+  type        = string
+  description = "AWS region"
+}
+
 
 
 # global

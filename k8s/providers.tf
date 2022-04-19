@@ -6,6 +6,10 @@ terraform {
     kubectl = {
       source = "gavinbunney/kubectl"
     }
+
+    aws = {
+      source = "hashicorp/aws"
+    }
   }
 }
 
@@ -32,4 +36,10 @@ provider "kubectl" {
   token                  = null_resource.kubeconfig.triggers.token
   cluster_ca_certificate = base64decode(null_resource.kubeconfig.triggers.cluster_ca_certificate)
   load_config_file       = false
+}
+
+provider "aws" {
+  region     = var.aws_region
+  access_key = var.aws_access_key
+  secret_key = var.aws_secret_key
 }

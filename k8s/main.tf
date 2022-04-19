@@ -45,8 +45,3 @@ resource "null_resource" "kubeconfig" {
 }
 
 
-resource "scaleway_lb_ip" "nginx_ip" {
-  zone       = var.zone
-  project_id = var.project_id
-}
-

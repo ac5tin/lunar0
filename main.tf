@@ -12,6 +12,7 @@ module "k8s" {
   cluster_issuer_email = var.cluster_issuer_email
   aws_access_key       = var.aws_access_key
   aws_secret_key       = var.aws_secret_key
+  aws_region           = var.aws_region
   providers = {
     scaleway = scaleway
   }
