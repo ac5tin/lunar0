@@ -1,6 +1,4 @@
-# k8s
-
-
+# k8s base
 variable "k8s_version" {
   type        = string
   description = "K8s version"
@@ -28,7 +26,24 @@ variable "cluster_max_size" {
 }
 
 
+# cert
+variable "cluster_issuer_email" {
+  type        = string
+  description = "Email of the cluster issuer"
+}
 
-# pass in from parent
+variable "aws_access_key" {
+  type        = string
+  description = "AWS access key"
+}
+
+variable "aws_secret_key" {
+  type        = string
+  description = "AWS secret key"
+}
+
+
+
+# global
 variable "zone" {}
 variable "project_id" {}

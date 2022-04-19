@@ -27,6 +27,14 @@ resource "scaleway_k8s_pool" "dust-0" {
 }
 
 
+/*
+The null_resource is needed because when the cluster is created,
+it's status is pool_required, but the kubeconfig can already be downloaded.
+It leads the kubernetes provider to start creating its objects,
+but the DNS entry for the Kubernetes master is not yet ready,
+that's why it's needed to wait for at least a pool.
+[source](https://registry.terraform.io/providers/scaleway/scaleway/latest/docs/resources/k8s_cluster)
+*/
 resource "null_resource" "kubeconfig" {
   depends_on = [scaleway_k8s_pool.dust-0] # at least 1 pool here
   triggers = {

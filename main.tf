@@ -1,12 +1,17 @@
 module "k8s" {
-  source           = "./k8s"
-  zone             = var.zone
-  project_id       = var.project_id
+  source     = "./k8s"
+  zone       = var.zone
+  project_id = var.project_id
+  # k8s
   k8s_version      = var.k8s_version
   node_type        = var.node_type
   cluster_size     = var.cluster_size
   cluster_min_size = var.cluster_min_size
   cluster_max_size = var.cluster_max_size
+  # cert
+  cluster_issuer_email = var.cluster_issuer_email
+  aws_access_key       = var.aws_access_key
+  aws_secret_key       = var.aws_secret_key
   providers = {
     scaleway = scaleway
   }
