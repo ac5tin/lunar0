@@ -42,4 +42,14 @@ resource "helm_release" "nginx_ingress" {
     name  = "controller.service.annotations.service\\.beta\\.kubernetes\\.io/scw-loadbalancer-use-hostname"
     value = "true"
   }
+
+  set {
+    name  = "controller.extraArgs.default-ssl-certificate"
+    value = "networking/downme-xyz-tls"
+  }
+
+  set {
+    name  = "defaultBackend.enabled"
+    value = false
+  }
 }
