@@ -52,3 +52,4 @@ variable "aws_region" {
 # global
 variable "zone" {}
 variable "project_id" {}
+variable "region" {}

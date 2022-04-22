@@ -8,6 +8,7 @@ module "k8s" {
   cluster_size     = var.cluster_size
   cluster_min_size = var.cluster_min_size
   cluster_max_size = var.cluster_max_size
+  region           = var.region
   # cert
   cluster_issuer_email = var.cluster_issuer_email
   aws_access_key       = var.aws_access_key
