@@ -23,7 +23,7 @@ resource "helm_release" "thelounge" {
 
   set {
     name  = "image.tag"
-    value = "4.2.0-alpine"
+    value = "4.3.0-alpine"
   }
 
   set {
@@ -32,7 +32,7 @@ resource "helm_release" "thelounge" {
   }
 
   set {
-    name = "ingress.main.ingressClassName"
+    name  = "ingress.main.ingressClassName"
     value = "nginx"
   }
 
@@ -42,52 +42,52 @@ resource "helm_release" "thelounge" {
   }
 
   set {
-    name = "ingress.main.hosts[0].host"
+    name  = "ingress.main.hosts[0].host"
     value = "thelounge.downme.xyz"
   }
 
 
   set {
-    name = "ingress.main.hosts[0].paths[0].path"
+    name  = "ingress.main.hosts[0].paths[0].path"
     value = "/"
   }
 
 
   set {
-    name = "ingress.main.hosts[0].paths[0].pathType"
+    name  = "ingress.main.hosts[0].paths[0].pathType"
     value = "Prefix"
   }
 
 
 
   set {
-    name = "ingress.main.hosts[0].paths[0].pathType"
+    name  = "ingress.main.hosts[0].paths[0].pathType"
     value = "Prefix"
   }
 
 
   set {
-    name = "ingress.main.tls[0].hosts[0]"
+    name  = "ingress.main.tls[0].hosts[0]"
     value = "thelounge.downme.xyz"
   }
 
   set {
-    name = "persistence.config.enabled"
+    name  = "persistence.config.enabled"
     value = true
   }
 
   set {
-    name = "persistence.config.storageClass"
+    name  = "persistence.config.storageClass"
     value = "scw-bssd"
   }
 
   set {
-    name = "persistence.config.accessMode"
+    name  = "persistence.config.accessMode"
     value = "ReadWriteOnce"
   }
 
   set {
-    name = "persistence.config.size"
+    name  = "persistence.config.size"
     value = "4Gi"
   }
 
