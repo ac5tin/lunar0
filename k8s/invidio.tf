@@ -137,7 +137,7 @@ resource "kubernetes_deployment" "invidio" {
       spec {
         container {
           name  = "invidio"
-          image = "quay.io/invidious/invidious:latest"
+          image = "quay.io/invidious/invidious:b867dd82ca2c01b9e2f10accfe2c18dfe42174a8"
           port {
             container_port = 3000
           }
@@ -185,7 +185,7 @@ resource "kubernetes_service" "invidio" {
       app = "invidio"
     }
     port {
-      port = 3000
+      port        = 3000
       target_port = 3000
     }
     type = "ClusterIP"
