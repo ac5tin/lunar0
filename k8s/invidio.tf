@@ -137,7 +137,7 @@ resource "kubernetes_deployment" "invidio" {
       spec {
         container {
           name  = "invidio"
-          image = "quay.io/invidious/invidious:b867dd82ca2c01b9e2f10accfe2c18dfe42174a8"
+          image = "quay.io/invidious/invidious:6ff3a633f7f7c71f5fb4ea821ae6fd85b645e1d5"
           port {
             container_port = 3000
           }
