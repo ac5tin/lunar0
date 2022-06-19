@@ -40,6 +40,16 @@ resource "helm_release" "nextcloud" {
     value = var.nextcloud_password
   }
 
+  set {
+    name  = "nextcloud.configs.custom\\.config\\.php"
+    value = <<-EOT
+<?php
+  $CONFIG = array (
+    'overwriteprotocol' => 'https'
+  );
+EOT
+  } # database
+
   # database
   set {
     name  = "postgresql.enabled"
