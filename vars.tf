@@ -78,3 +78,9 @@ variable "aws_region" {
   type        = string
   description = "AWS region"
 }
+
+variable "nextcloud_password" {
+  type        = string
+  description = "Nextcloud password"
+}
+

@@ -48,6 +48,13 @@ variable "aws_region" {
 }
 
 
+# nextcloud
+variable "nextcloud_password" {
+  type        = string
+  description = "Nextcloud password"
+}
+
+
 
 # global
 variable "zone" {}
