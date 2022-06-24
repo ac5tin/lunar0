@@ -79,6 +79,25 @@ EOT
     name  = "persistence.size"
     value = "100Gi"
   }
+
+  # resources
+  set {
+    name  = "resources.requests.cpu"
+    value = "128m"
+  }
+  set {
+    name  = "resources.requests.memory"
+    value = "1Gi"
+  }
+
+  set {
+    name  = "resources.limits.cpu"
+    value = "500m"
+  }
+  set {
+    name  = "resources.limits.memory"
+    value = "1.5Gi"
+  }
 }
 
 
@@ -133,3 +152,4 @@ resource "aws_route53_record" "nextcloud" {
     scaleway_lb_ip.nginx_ip.ip_address,
   ]
 }
+
