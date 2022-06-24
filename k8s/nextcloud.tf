@@ -87,16 +87,16 @@ EOT
   }
   set {
     name  = "resources.requests.memory"
-    value = "1Gi"
+    value = "512Mi"
   }
 
   set {
     name  = "resources.limits.cpu"
-    value = "500m"
+    value = "200m"
   }
   set {
     name  = "resources.limits.memory"
-    value = "1.5Gi"
+    value = "750Mi"
   }
 }
 
