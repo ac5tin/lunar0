@@ -96,7 +96,7 @@ EOT
   }
   set {
     name  = "resources.limits.memory"
-    value = "750Mi"
+    value = "512Mi"
   }
 }
 
