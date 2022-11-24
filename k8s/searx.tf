@@ -28,7 +28,7 @@ resource "kubernetes_deployment" "searxng" {
       }
       spec {
         container {
-          image = "searxng/searxng:2022.09.09-eb3d185e"
+          image = "searxng/searxng:2022.11.19-b5371b7a"
           name  = "searxng"
           port {
             container_port = 8080
