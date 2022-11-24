@@ -4,10 +4,10 @@ resource "kubernetes_secret" "scaleway-secret" {
     namespace = "kube-system"
   }
   data = {
-    "SCW_ACCESS_KEY"    = var.aws_access_key
-    "SCW_SECRET_KEY" = var.aws_secret_key
+    "SCW_ACCESS_KEY"        = var.aws_access_key
+    "SCW_SECRET_KEY"        = var.aws_secret_key
     "SCW_DEFAUL_PROJECT_ID" = var.project_id
-    "SCW_DEFAULT_REGION" = var.region
+    "SCW_DEFAULT_REGION"    = var.region
   }
   type = "Opaque"
 }
@@ -55,7 +55,7 @@ spec:
       hostNetwork: true
       containers:
         - name: scaleway-csi-plugin
-          image: scaleway/scaleway-csi:v0.1.7
+          image: scaleway/scaleway-csi:v0.2.0
           args :
             - "--endpoint=$(CSI_ENDPOINT)"
             - "--v=4"
@@ -86,7 +86,7 @@ spec:
             - name: device-dir
               mountPath: /dev
         - name: csi-node-driver-registrar
-          image: k8s.gcr.io/sig-storage/csi-node-driver-registrar:v2.0.1
+          image: k8s.gcr.io/sig-storage/csi-node-driver-registrar:v2.6.1
           args:
             - "--v=2"
             - "--csi-address=$(CSI_ADDRESS)"
@@ -106,7 +106,7 @@ spec:
             - name: registration-dir
               mountPath: /registration/
         - name: liveness-probe
-          image: k8s.gcr.io/sig-storage/livenessprobe:v2.2.0
+          image: k8s.gcr.io/sig-storage/livenessprobe:v2.8.0
           args:
             - "--csi-address=$(CSI_ADDRESS)"
           env:
@@ -816,7 +816,7 @@ spec:
       serviceAccount: scaleway-csi-controller
       containers:
         - name: scaleway-csi-plugin
-          image: scaleway/scaleway-csi:v0.1.8
+          image: scaleway/scaleway-csi:v0.2.0
           args :
             - "--endpoint=$(CSI_ENDPOINT)"
             - "--mode=controller"
@@ -842,7 +842,7 @@ spec:
             periodSeconds: 2
             failureThreshold: 5
         - name: csi-provisioner
-          image: k8s.gcr.io/sig-storage/csi-provisioner:v3.0.0
+          image: k8s.gcr.io/sig-storage/csi-provisioner:v3.3.0
           args:
             - "--v=5"
             - "--csi-address=$(CSI_ADDRESS)"
@@ -856,7 +856,7 @@ spec:
             - name: socket-dir
               mountPath: /var/lib/csi/sockets/pluginproxy/
         - name: csi-attacher
-          image: k8s.gcr.io/sig-storage/csi-attacher:v3.3.0
+          image: k8s.gcr.io/sig-storage/csi-attacher:v4.0.0
           args:
             - "--v=5"
             - "--csi-address=$(CSI_ADDRESS)"
@@ -868,7 +868,7 @@ spec:
             - name: socket-dir
               mountPath: /var/lib/csi/sockets/pluginproxy/
         - name: csi-snapshotter
-          image: k8s.gcr.io/sig-storage/csi-snapshotter:v4.2.1
+          image: k8s.gcr.io/sig-storage/csi-snapshotter:v6.1.0
           args:
             - "--v=5"
             - "--csi-address=$(CSI_ADDRESS)"
@@ -880,12 +880,12 @@ spec:
             - name: socket-dir
               mountPath: /var/lib/csi/sockets/pluginproxy/
         - name: snapshot-controller
-          image: k8s.gcr.io/sig-storage/snapshot-controller:v4.1.1
+          image: k8s.gcr.io/sig-storage/snapshot-controller:v6.1.0
           args:
             - "--v=5"
             - "--leader-election"
         - name: csi-resizer
-          image: k8s.gcr.io/sig-storage/csi-resizer:v1.3.0
+          image: k8s.gcr.io/sig-storage/csi-resizer:v1.6.0
           args:
             - "--v=5"
             - "--csi-address=$(CSI_ADDRESS)"
@@ -897,7 +897,7 @@ spec:
             - name: socket-dir
               mountPath: /var/lib/csi/sockets/pluginproxy/
         - name: liveness-probe
-          image: k8s.gcr.io/sig-storage/livenessprobe:v2.2.0
+          image: k8s.gcr.io/sig-storage/livenessprobe:v2.8.0
           args:
             - "--csi-address=$(CSI_ADDRESS)"
           env:
