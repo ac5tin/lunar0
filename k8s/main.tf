@@ -1,7 +1,10 @@
+resource "scaleway_vpc_private_network" "hedy" {}
+
 resource "scaleway_k8s_cluster" "lunar0" {
   name                        = "lunar0"
   version                     = var.k8s_version
   cni                         = "calico"
+  private_network_id          = scaleway_vpc_private_network.hedy.id
   delete_additional_resources = false
 
   autoscaler_config {
