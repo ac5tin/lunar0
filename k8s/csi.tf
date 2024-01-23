@@ -55,7 +55,7 @@ spec:
       hostNetwork: true
       containers:
         - name: scaleway-csi-plugin
-          image: scaleway/scaleway-csi:v0.2.0
+          image: scaleway/scaleway-csi:v0.2.3
           args :
             - "--endpoint=$(CSI_ENDPOINT)"
             - "--v=4"
@@ -816,7 +816,7 @@ spec:
       serviceAccount: scaleway-csi-controller
       containers:
         - name: scaleway-csi-plugin
-          image: scaleway/scaleway-csi:v0.2.0
+          image: scaleway/scaleway-csi:v0.2.3
           args :
             - "--endpoint=$(CSI_ENDPOINT)"
             - "--mode=controller"
