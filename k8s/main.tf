@@ -1,7 +1,8 @@
 resource "scaleway_k8s_cluster" "lunar0" {
-  name    = "lunar0"
-  version = var.k8s_version
-  cni     = "calico"
+  name                        = "lunar0"
+  version                     = var.k8s_version
+  cni                         = "calico"
+  delete_additional_resources = false
 
   autoscaler_config {
     disable_scale_down         = false

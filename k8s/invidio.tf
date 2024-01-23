@@ -108,6 +108,13 @@ resource "kubernetes_service" "invidio_postgres" {
 }
 
 
+# hmac key
+resource "random_string" "hmac_key" {
+  length           = 16
+  special          = true
+  override_special = "/@£$"
+}
+
 
 # deployment
 resource "kubernetes_deployment" "invidio" {
@@ -137,7 +144,7 @@ resource "kubernetes_deployment" "invidio" {
       spec {
         container {
           name  = "invidio"
-          image = "quay.io/invidious/invidious:d6dd341594cc837001ed57cbea3103d22c9988c1-quic"
+          image = "quay.io/invidious/invidious:d956b1826e15da6cfcd9a1531b0f1e6ef577dd10-quic"
           port {
             container_port = 3000
           }
@@ -151,8 +158,10 @@ resource "kubernetes_deployment" "invidio" {
                 password: invidio
                 dbname: invidio
               check_tables: true
+              hmac_key: ${random_string.hmac_key.result}
             EOF
           }
+
           resources {
             requests = {
               cpu    = "0.2"

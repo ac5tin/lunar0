@@ -28,4 +28,5 @@ output "k8s_kubeconfig" {
   depends_on = [
     module.k8s
   ]
+  sensitive = true
 }
