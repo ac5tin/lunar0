@@ -23,7 +23,7 @@ resource "helm_release" "thelounge" {
 
   set {
     name  = "image.tag"
-    value = "4.3.1"
+    value = "4.4.1"
   }
 
   set {
